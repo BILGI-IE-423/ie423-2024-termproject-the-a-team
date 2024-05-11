@@ -121,11 +121,10 @@ gantt
     section Data Testing
     Develop Insights on Data Preprocessing  :2024-05-10, 3d
     Dataset Merging for the 3 Datasets (if possible)  :2024-05-13, 1d
-    Validation (SVM, kNN, Log Regression)       :2024-05-14, 3d
-    Develop Transformations on Data Preprocessing :2024-05-15, 2d
+    Develop Transformations on Data Preprocessing :2024-05-14, 2d
 
     section Model Development
-    Model Training   :2024-05-19, 22d
+    Model Training/Validation (SVM, kNN, Log Regression)    :2024-05-18, 25d
     Determine Approach:2024-06-10, 2d
     Performance Measurement:2024-06-12, 3d
     Testing          :2024-06-15, 3d
