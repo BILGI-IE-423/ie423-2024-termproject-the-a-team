@@ -312,12 +312,128 @@ Based on the analysis and visualizations, the Gradient Boosting model performs b
     - The scatter plot shows a dense cluster of points with GDP PPP per capita (2011 USD) and Income..net.
     - Most points are concentrated at lower GDP and income levels, with a few high-income outliers.
 
+## Analysis of Feature Importances from Gradient Boosting Model 
+Based on the feature importance plot provided by the Gradient Boosting model, we can draw the following conclusions about the relative importance of the features in predicting the target variable (likely some measure of economic performance or inequality, given the feature names):
+
+
 
 ![Screenshot 5](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/5.png)
+
+- Gini Recalculated Encoded:
+Importance: 0.995693
+Interpretation: This feature has an overwhelmingly high importance compared to the other features. It suggests that the 'gini_recalculated_encoded' variable is the most critical factor in predicting the target variable. The Gini coefficient is a measure of income inequality, so this result indicates that income inequality is the primary driver in the model's predictions.
+
+- GDP PPP per Capita (2011 USD):
+Importance: 0.002844
+Interpretation: This feature has a very low importance relative to the Gini coefficient. It suggests that GDP per capita (adjusted for purchasing power parity) does not play a significant role in the model's predictions. This might be surprising in economic analyses, as GDP per capita is usually a strong indicator of economic performance. However, in this context, it appears to be less relevant.
+- Country Encoded:
+Importance: 0.001463
+Interpretation: This feature also has very low importance. It suggests that the country identifier (likely a categorical variable that has been encoded) does not contribute much to the model's predictions. This could imply that country-specific effects are either minimal or already captured by the other variables, particularly the Gini coefficient.
+## Feature Importance Insights:
+The overwhelming importance of the 'gini_recalculated_encoded' feature suggests that inequality is a critical factor in the model's predictions. This aligns with economic theories where income inequality can have significant impacts on various economic outcomes.
+The low importance of GDP per capita (PPP) is unexpected, as it is typically a strong indicator in economic models. This could imply that in this specific dataset or context, income inequality is a more direct driver of the target variable.
+The minimal importance of the country identifier suggests that the model's predictions are not heavily influenced by country-specific effects, or these effects are already captured by other variables like the Gini coefficient.
+
+
+# MEAT CONSUMPTION 
+
+## Project Overview
+
+This project aims to analyze and compare different regression models on two datasets derived from meat consumption data. The original dataset, `dMeat`, was split into two subsets: `dMeat1` and `dMeat2`.
+
+## Datasets
+
 ![Screenshot 6](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/6.png)
+- **`dMeat1`**: Represents all countries excluding aggregated regions such as European countries EU28, BRICS, etc.
+- **`dMeat2`**: includes Aggregated regions only.
 ![Screenshot 7](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/7.png)
-![Screenshot 8](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/8.png)
+
+### Outlier Handling
+
+Upon investigating outliers in `dMeat1` and `dMeat2`, both datasets showed significant outliers:
+- In `dMeat1`, outliers were retained as they reflect the actual meat consumption results for Korea.
+- In `dMeat2`, outliers were removed because they represented aggregated world data (WLD), which is irrelevant to our model.
+
 ![Screenshot 9](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/9.png)
 ![Screenshot 10](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/10.png)
+
+
+
+### Label Encoding
+
+Label encoding was applied to both datasets, resulting in:
+- **`dMeat1_encoded`**: Encoded categorical features, including outliers.
+- **`dMeat2_clean`**: Cleaned and preprocessed features, excluding outliers.
+
+### Log Transformation
+
+Since the boxplots of both datasets still showed outliers after initial preprocessing, a log transformation was applied to handle outliers and address distribution abnormalities.
+
+
+![Screenshot 8](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/8.png)
+
+### Preprocessing and Correlation Analysis
+
+After preprocessing and log transformation, correlation analysis was conducted again on both datasets.
+
+## Model Training and Evaluation
+
+The following models were trained and evaluated:
+
+1. **Linear Regression**
+2. **Support Vector Machine (SVM)**
+   - Linear Kernel
+   - Polynomial Kernel
+   - RBF Kernel
+3. **Random Forest**
+4. **Gradient Boosting**
+5. **Baseline Mean Predictor**
+
+The performance of these models was assessed using cross-validation, with the mean cross-validated mean squared error (MSE) serving as the primary evaluation metric.
+
+
+
+## Analysis of Results
+
+After analysing the data two type majorities were detected.
+
+
+The pie chart shows the percentage of each meat type in total value. Pork makes up the largest portion of the chart at 40.6%. Poultry comes in second at 34%, followed by beef at 20.8%, and sheep at 4.6%. Pork and Poultry occupy the majority of the data with sheep being in the minority. But after removing the outliners, this data was more standartized which each type having close percentages.
+
+
+
+## Analysis of Model Performance
+
+### dMeat1_encoded Dataset
+- Linear Regression: Mean CV MSE = 2.660254256366046
+- SVM (Linear Kernel): Mean CV MSE = 2.676847006190485
+- SVM (Polynomial Kernel): Mean CV MSE = 2.374748290466166
+- SVR Best Parameters: C = 1, gamma = 1, Mean CV MSE = 2.1977756957441708
+- Random Forest Best Parameters: {'max_depth': 20, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}, Best CV MSE = 0.11581626296138578
+- Gradient Boosting Best Parameters: {'learning_rate': 0.2, 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}, Best CV MSE = 0.12187337553905082
+- Baseline Mean Predictor: CV MSE = 6.06654970385449 (log-transformed)
 ![Screenshot 11](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/11.png)
+Analysis: Based on these results, the Support Vector Regression (SVR) with the best parameters (C = 1, gamma = 1) outperforms both Linear Regression and SVM with polynomial and linear kernels. However, Random Forest and Gradient Boosting models significantly outperform all other models with much lower CV MSE values. This indicates that ensemble methods like Random Forest and Gradient Boosting are better suited for capturing the complexity and non-linearity in dMeat1_encoded dataset.
+
+### dMeat2_clean Dataset
+- Linear Regression: Mean CV MSE = 0.6878959224981218
+- SVM (Linear Kernel): Mean CV MSE = 0.7211641768498162
+- SVM (Polynomial Kernel): Mean CV MSE = 0.6225849939869216
+- SVR Best Parameters: C = 10, gamma = 1, Mean CV MSE = 0.03015073743257372
+- Random Forest Best Parameters: {'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}, Best CV MSE = 0.02747318729260343
+- Gradient Boosting Best Parameters: {'learning_rate': 0.1, 'max_depth': 4, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}, Best CV MSE = 0.027422939653756417
+Baseline Mean Predictor: CV MSE = 13.599948753068556 (log-transformed)
 ![Screenshot 12](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/12.png)
+Analysis:
+
+## Conclusion
+Based on these comparisons, Random Forest and Gradient Boosting models consistently outperform other models such as Linear Regression and SVM (linear, polynomial, and RBF) for both dMeat1_encoded and dMeat2_clean datasets. They demonstrate superior predictive accuracy as indicated by lower Mean CV MSE values. These findings underline the importance of choosing appropriate models that can capture the complexity of the data and highlight ensemble methods as robust choices for regression tasks involving agricultural meat data.
+Linear Regression performs adequately on dMeat2_clean but poorly on dMeat1_encoded.
+SVM with RBF Kernel demonstrates consistent and competitive performance across both datasets.
+Random Forest and Gradient Boosting consistently achieve the lowest MSE values, indicating superior predictive performance.
+The Polynomial Kernel SVM shows signs of overfitting or inadequate fit for the data, particularly on dMeat1_encoded.
+These results underscore the efficacy of ensemble methods like Random Forest and Gradient Boosting in capturing complex data relationships, while simpler models like Linear Regression and SVM with RBF Kernel provide reasonable alternatives depending on dataset characteristics.
+
+
+
+
