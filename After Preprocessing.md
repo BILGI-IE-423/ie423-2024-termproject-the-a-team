@@ -1,19 +1,19 @@
-## Merging dataframes except merged_region_expectancy
+# Merging dataframes except merged_region_expectancy
 Five dataframes were merged except one because we couldn’t merge the region one so we kept it separate since this goes by region names and not country names.
 The plots show that there are outliers with skewness of data as well as the correlation matrix indicates that there are no strong linear relationships between any pairs of variables in the dataset. The relationships that do exist are very weak, suggesting that the variables are largely independent of each other. The strongest correlation is -0.19 between Period and Indicator_encoded, but this is still considered weak.
- Thus, outliers that fall out of the interquartile range were removed.
+Thus, outliers that fall out of the interquartile range were removed.
 
-
-## Split & Scale Merged Data
+# Split & Scale Merged Data
 1- splitting data: the data is divided into training 80% and testing 20% sets. X_train and y_train are used to train the model, while X_test and y_test are used to evaluate its performance.
 Purpose: To divide the dataset into training and testing sets for model evaluation.
 2- scaling data: The feature values in X_train and X_test are standardized, ensuring that all features contribute equally to the model's performance. 
 purpose: To standardize the features to have a mean of 0 and a standard deviation of 1, which helps many machine learning algorithms perform better. 
 
-## Cross Validation
+# Cross Validation
 Several Models were applied in the cross-validation process to evaluate the performances of models. The incentive is to find the best performing model that gives the lowest MSE and then train and test on that model. A baseline model was used as a benchmark in cross validation, training, and testing. The Merged Dataframe without Region consists of a large dataset so dimensionality reduction was applied using PCA on linear regression and SVM(RBF kernel) and compared to regular linear regression and SVM(RBF kernel) without DR.
 The Region dataframe consists of one csv file with preprocessed data, thus explaining why the values are smaller than the other data frame.
-Cross Validation on the Merged Dataframe
+
+## Cross Validation on the Merged Dataframe
 
 We analyzed the performance of multiple machine learning models on the merged dataset, focusing on Linear Regression, Support Vector Machine (SVM) with different kernels, Random Forest, Gradient Boosting, and a baseline DummyRegressor. The data was initially divided into training and test sets, and scaling was used to normalize the training data to zero mean and unit variance. This preprocessing step assured good performance for models that are sensitive to feature scales, such as SVMs. The baseline model was used as a ben
 
@@ -67,8 +67,8 @@ Mean Absolute Error (MAE):
 The MAE of 1.2427639145181417 indicates that, on average, the model's predictions are very close to the actual values.
 R²:
 An R² value of 0.46612022553671184 means that the model explains approximately 46.6% of the variance in the target variable. While this is moderate, it suggests that there is significant unexplained variance. That is probably due to the small dataframe.
-## Conclusion
-For the Merged Dataframe without Region:
+
+## Conclusion For the Merged Dataframe without Region:
 The Gradient Boosting model demonstrates a good fit with an R² value of 0.722 and reasonable error metrics. This model could be considered robust for predicting the target variable in this context.
 For the Merged Region Dataframe:
 The Gradient Boosting model has very low MSE and MAE, indicating high prediction accuracy. However, the R² value of 0.466 suggests that there is still substantial variance that the model does not explain. This could be improved with further feature engineering or by incorporating additional relevant features.
@@ -92,8 +92,7 @@ Actual vs Predicted Plot:
 Observation: The points are somewhat dispersed around the diagonal line, indicating a moderate correlation between actual and predicted values. The dispersion suggests that while the model is reasonably accurate, there is room for improvement.
 Implication: The model's predictive accuracy is moderate. The spread indicates that some predictions are further from the actual values, which might be improved by further tuning or incorporating additional features.
 
-## Conclusion
-Merged Dataframe without Region:
+## Conclusion for Merged Dataframe without Region:
 The Gradient Boosting model is performing well, with relatively high accuracy and good predictive performance. The residuals and actual vs predicted plots both suggest that the model captures the underlying pattern well, despite some heteroscedasticity.
 Merged Region Dataframe:
 The model shows reasonable accuracy but could benefit from further tuning. The residuals plot indicates some variance in errors, and the actual vs predicted plot suggests that the model's predictions could be more tightly clustered around the actual values.
