@@ -145,9 +145,13 @@ ale Expectancy:**
 #### Feature Importance Insights
 
 The feature importance analysis highlights the critical role of geographic location and overall life expectancy in predicting health outcomes. Temporal factors and specific health indicators also contribute significantly, while the proportion of HALE in life expectancy is less impactful. This insight can guide further analysis and model refinement, emphasizing the need to consider regional differences and temporal trends in health data.
+
 **Prioritize Location and Life Expectancy:** Focus on these key features for better predictive accuracy.
+
 **Monitor Temporal Changes:** Continuously update models with new data to capture trends.
+
 **Enhance Health Indicators:** Include more detailed health metrics to improve model performance.
+
 **Refine HALE Data Usage:** Use HALE data to provide additional context and depth.
 
 
