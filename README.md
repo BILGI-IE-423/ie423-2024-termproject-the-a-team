@@ -740,7 +740,7 @@ gantt
 
 Team Name: _**The A Team**_
 
-Team Members: 
+**Team Members:** 
 - Ahmad Assali 120203007
 - Derya Alp Balbay 120203055 
 - Lana Dabbagh 120203092
