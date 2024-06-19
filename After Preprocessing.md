@@ -68,12 +68,6 @@ The MAE of 1.2427639145181417 indicates that, on average, the model's prediction
 R²:
 An R² value of 0.46612022553671184 means that the model explains approximately 46.6% of the variance in the target variable. While this is moderate, it suggests that there is significant unexplained variance. That is probably due to the small dataframe.
 
-## Conclusion For the Merged Dataframe without Region:
-The Gradient Boosting model demonstrates a good fit with an R² value of 0.722 and reasonable error metrics. This model could be considered robust for predicting the target variable in this context.
-For the Merged Region Dataframe:
-The Gradient Boosting model has very low MSE and MAE, indicating high prediction accuracy. However, the R² value of 0.466 suggests that there is still substantial variance that the model does not explain. This could be improved with further feature engineering or by incorporating additional relevant features.
-However, Gradient Boosting seems to be performing well in both dataframes give low MSE error, lower than in cross validation and baseline models. 
-
 ## Analysis Based on Figures
 
 1. Merged Dataframe without Region
@@ -91,6 +85,14 @@ Implication: The model's predictions have some error variance that is not consta
 Actual vs Predicted Plot:
 Observation: The points are somewhat dispersed around the diagonal line, indicating a moderate correlation between actual and predicted values. The dispersion suggests that while the model is reasonably accurate, there is room for improvement.
 Implication: The model's predictive accuracy is moderate. The spread indicates that some predictions are further from the actual values, which might be improved by further tuning or incorporating additional features.
+
+# Conclusion
+
+## Conclusion For the Merged Dataframe without Region:
+The Gradient Boosting model demonstrates a good fit with an R² value of 0.722 and reasonable error metrics. This model could be considered robust for predicting the target variable in this context.
+For the Merged Region Dataframe:
+The Gradient Boosting model has very low MSE and MAE, indicating high prediction accuracy. However, the R² value of 0.466 suggests that there is still substantial variance that the model does not explain. This could be improved with further feature engineering or by incorporating additional relevant features.
+However, Gradient Boosting seems to be performing well in both dataframes give low MSE error, lower than in cross validation and baseline models. 
 
 ## Conclusion for Merged Dataframe without Region:
 The Gradient Boosting model is performing well, with relatively high accuracy and good predictive performance. The residuals and actual vs predicted plots both suggest that the model captures the underlying pattern well, despite some heteroscedasticity.
