@@ -156,11 +156,13 @@ The feature importance analysis highlights the critical role of geographic locat
 
 
 ![Income Distribution](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/3.png)
+
 The histogram shows a right-skewed distribution for Income..net., indicating that most values are concentrated at the lower end of the range.
 There are some high-income outliers.
 
 
 ![GDP vs. Income](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/4.png)
+
 The scatter plot shows a dense cluster of points with GDP PPP per capita (2011 USD) and Income..net.
 Most points are concentrated at lower GDP and income levels, with a few high-income outliers.
 
