@@ -165,8 +165,10 @@ The feature importance analysis highlights the critical role of geographic locat
 
 ![GDP vs. Income](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/4.png)
 
-The scatter plot shows a dense cluster of points with GDP PPP per capita (2011 USD) and Income..net.
-Most points are concentrated at lower GDP and income levels, with a few high-income outliers.
+- Scatter Plot of GDP vs. Income:
+    - The scatter plot shows a dense cluster of points with GDP PPP per capita (2011 USD) and Income..net.
+    - Most points are concentrated at lower GDP and income levels, with a few high-income outliers.
+
 
 ![Screenshot 5](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/5.png)
 ![Screenshot 6](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/6.png)
