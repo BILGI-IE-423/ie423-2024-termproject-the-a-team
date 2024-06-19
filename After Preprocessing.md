@@ -154,6 +154,149 @@ The feature importance analysis highlights the critical role of geographic locat
 
 **Refine HALE Data Usage:** Use HALE data to provide additional context and depth.
 
+# IncomeStats Data Set
+
+## Dealing with Outliers
+The histogram indicates a skewed income distribution with most values on the lower end, while the scatter plot reveals a weak or complex relationship between GDP per capita and net income. This implies that factors other than GDP might significantly influence net income, highlighting the need for a more detailed analysis to understand the underlying dynamics. So, further preprocessing was done in which outliers were removed and label encoder was used instead of one hot to directly transforms categorical data into integers, which requires less memory compared to creating multiple binary columns for each category in one-hot encoding. 
+
+
+Income Distribution:
+
+The histogram shows a right-skewed distribution for Income..net., indicating that most values are concentrated at the lower end of the range.
+There are some high-income outliers.
+
+Scatter Plot of GDP vs. Income:
+The scatter plot shows a dense cluster of points with GDP PPP per capita (2011 USD) and Income..net.
+Most points are concentrated at lower GDP and income levels, with a few high-income outliers.
+
+Box Plots:
+Income..net.: The box plot shows a distribution with a few outliers at the high end.
+GDP PPP per Capita: The box plot indicates a wide range of GDP values, with several high outliers.
+
+Correlation Matrix:
+The correlation matrix indicates a weak positive correlation (0.10) between GDP PPP per capita and Income..net.
+The diagonal elements are 1, as expected, indicating perfect correlation with themselves. The weak positive correlation between Income..net. and GDP PPP per capita suggests that while there is some relationship, it is not strong. This could indicate other factors at play affecting income beyond just GDP.
+
+Descriptive Statistics:
+GDP PPP per capita:
+Mean: $7,517.81
+Std Dev: $6,263.67
+Range: 505𝑡𝑜25,112.48
+Income..net.:
+Mean: 0.074
+Std Dev: 0.042
+Range: 0 to 0.199
+
+
+
+## Split & Scale
+
+- The dataset is split into training and testing sets, with 80% of the data used for training and 20% for testing.
+- The feature matrix `X` and target vector `y` are confirmed to have the expected dimensions.
+- After the split, the training set has 47192 samples and the testing set has 11798 samples, each with 3 features.
+
+This confirms that the data splitting and preprocessing steps were successful.
+
+
+## Cross Validation
+A baseline model was used again as a benchmark.
+### Without Polynomial Features:
+- Linear Regression Mean CV MSE: 0.0016643076854874653
+- Gradient Boosting Mean CV MSE: 0.001664267209137556
+- XGBoost Mean CV MSE: 0.0016698868183740467
+- Random Forest Best CV MSE: 0.0017265048574526785
+
+### With Polynomial Features:
+- Linear Regression Mean CV MSE with Polynomial Features: 0.0016705353347180416
+- Gradient Boosting Mean CV MSE with Polynomial Features: 0.0016708402631583539
+- XGBoost Mean CV MSE with Polynomial Features: 0.0016702247333003982
+  
+## After Principal Component Analysis (PCA):
+- Linear Regression Mean CV MSE after PCA: 0.0016702935364525586
+- Gradient Boosting Mean CV MSE after PCA: 0.0016775458770986289
+## SVM Models:
+- SVM (Linear Kernel) Mean CV MSE: 0.0023479822791206183
+- SVM (Polynomial Kernel) Mean CV MSE: 0.0017443387752204323
+Best SVR parameters ('C': 1, 'gamma': 0.1): Mean CV MSE: 0.0017472056433441574
+
+# Summary of Results:
+## Linear Regression:
+- Without Polynomial Features: 0.0016643076854874653 (Best Linear Regression performance)
+- With Polynomial Features: 0.0016705353347180416
+- After PCA: 0.0016702935364525586
+
+## Gradient Boosting:
+- Without Polynomial Features: 0.001664267209137556 (Best Gradient Boosting performance)
+- With Polynomial Features: 0.0016708402631583539
+- After PCA: 0.0016775458770986289
+  
+## XGBoost:
+- Without Polynomial Features: 0.0016698868183740467 (Best XGBoost performance)
+- With Polynomial Features: 0.0016702247333003982
+  
+## Random Forest:
+Without Polynomial Features: 0.0017265048574526785
+
+## SVM Models:
+- SVM (Linear Kernel): 0.0023479822791206183
+- SVM (Polynomial Kernel): 0.0017443387752204323
+- Best SVR parameters ('C': 1, 'gamma': 0.1): 0.0017472056433441574
+
+## Analysis:
+- Best Overall Model: The best performing model overall is Gradient Boosting without Polynomial Features with a CV MSE of 0.001664267209137556.
+- Linear Regression: The best Linear Regression performance is without polynomial features (0.0016643076854874653), closely followed by with PCA (0.0016702935364525586).
+- XGBoost: The best XGBoost performance is without polynomial features (0.0016698868183740467).
+- Random Forest: The Random Forest model without polynomial features has a CV MSE of 0.0017265048574526785, which is higher than the best performances of Linear Regression, Gradient Boosting, and XGBoost.
+- SVM Models: The best SVM performance is with the Polynomial Kernel (0.0017443387752204323), but it is still higher than the best Linear Regression, Gradient Boosting, and XGBoost performances.
+
+## Conclusion of Analysis:
+The Gradient Boosting model without polynomial features has the lowest CV MSE and is the best performing model among those compared. Adding polynomial features or applying PCA did not significantly improve the performance for most models. The SVM models, while competitive, did not outperform the tree-based models or linear regression in this case. The Random Forest model also performed well but did not beat the best Gradient Boosting or Linear Regression performances. 
+Also Cross-Validation MAE: 0.0331604531330195 and Cross-Validation R-squared (R²): 0.05946244859176941 for Gradient Boosting were calculated.
+
+
+## Training
+Due to the best performance also compared to the baseline model(0.0017762370083162146), Gradient Boosting performs best. So, continued to train and test using Gradient Boosting.
+
+Summary of Performance Metrics:
+Mean Squared Error (MSE): 0.0016844578929000975
+Mean Absolute Error (MAE): 0.03343061759060899
+R-squared (R²): 0.0621863704521054
+Analysis:
+MSE (Mean Squared Error): This is a measure of the average squared difference between the actual values and the predicted values. A lower value indicates better performance, with your model achieving an MSE of 0.0016844578929000975.
+MAE (Mean Absolute Error): This metric measures the average magnitude of the errors in a set of predictions, without considering their direction. The MAE for your model is 0.03343061759060899.
+R² (R-squared): This metric indicates the proportion of the variance in the dependent variable that is predictable from the independent variables. An R² value of 0.0621863704521054 indicates that the model explains approximately 6.22% of the variance in the test data.
+Analysis of Model Performance:
+Gradient Boosting Model:
+Mean CV MSE vs. Test Set MSE:
+Mean CV MSE: 0.001664267209137556
+Test Set MSE: 0.0016844578929000975
+The cross-validated MSE and the test set MSE are very close, suggesting that the model generalizes well to unseen data. This indicates that the model is not overfitting.
+R-squared (R²): 0.0621863704521054
+The R² value is relatively low, indicating that the model explains only about 6.2% of the variance in the test data. This indicates that the model might not be capturing all the underlying patterns in the data, and there could be other significant predictors not included in the current feature set.
+
+Baseline Model:
+Test Set MSE: 0.0017961729421112453
+The baseline model's MSE is higher than the Gradient Boosting model's MSE, indicating that the Gradient Boosting model performs better than simply predicting the mean. However, the improvement is modest.
+
+## Conclusion of Training:
+Based on the results, the models do not appear to be overfitting since the cross-validated MSEs are close to the test set MSEs. Generalization: The similar performance on cross-validation and test sets shows that the model generalizes well to unseen data, which is a desirable property in machine learning models. The slight difference in MAE and R-squared values is expected due to the natural variability between different data samples.
+Overall, these comparisons indicate that the Gradient Boosting model trained with the best hyperparameters found through GridSearchCV is robust and generalizes well to new data.
+
+## Nature of the Dataset
+Based on the performance of the models and the evaluation metrics provided, we can draw some conclusions about the nature of the dataset:
+Complexity and Variability:
+The relatively low R-squared (R²) value of 0.0621 for the Gradient Boosting model suggests that the dataset has a lot of variability that the model is not capturing. This indicates that the relationship between the input features (Age, Income, Education) and the target variable (Spending) is not straightforward or is influenced by other factors not included in the model.
+Predictive Power:
+The models' MSE values are close to each other, and the Gradient Boosting model shows only a modest improvement over the baseline model. This suggests that the input features used may not have strong predictive power for the target variable. There may be other important features not captured in the current dataset that could better explain the variance in Spending.
+Model Generalization:
+The close Mean CV MSE and Test Set MSE for the Gradient Boosting model indicate that the model generalizes well to unseen data. This suggests that the model is not overfitting and is consistent in its predictions across different data splits.
+Baseline Comparison:
+The baseline model's performance is relatively close to the Gradient Boosting model, which highlights that the improvement gained from using more complex models is modest. This again points to the possibility that additional or more relevant features could significantly improve model performance.
+
+## Conclusion for the Nature of the Dataset
+
+Based on the analysis and visualizations, the Gradient Boosting model performs better than the baseline model and other models in terms of Mean CV MSE and Test Set MSE. However, the relatively low R-squared value indicates that the model is not capturing all the variability in the target variable. This suggests that there might be additional features or more complex interactions within the data that are not being captured by the current model. Further feature engineering and exploration of additional data could help improve the model's predictive power.
+
 
 ![Income Distribution](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/3.png)
 
