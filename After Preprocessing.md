@@ -102,7 +102,19 @@ The model shows reasonable accuracy but could benefit from further tuning. The r
 
 
 ![Screenshot 1](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/1.png)
+
+- For Merged Dataframe without Region:
+    - This model can be used for final predictions as it performs well. Consider addressing heteroscedasticity if further refinement is needed.
+
+
 ![Screenshot 2](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/2.png)
+
+- For Merged Region Dataframe:
+    - Perform further validation and potentially add more features or refine existing ones to improve model performance.
+    - Investigate possible reasons for higher residuals and work on reducing prediction errors, especially for higher values of the target variable.
+
+This combined analysis provides a holistic view of the model performance based on the provided figures and statistical metrics. Based on the results, the models do not seem to be overfitting, as the cross-validated MSEs are close to those of the test set. The similar performance on cross-validation and test sets indicates that the model generalizes well to unseen data, which is a desirable property in machine learning models. The slight differences in MAE and R-squared values are expected due to the natural variability between different data samples.
+
 ![Screenshot 3](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/3.png)
 ![Screenshot 4](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/4.png)
 ![Screenshot 5](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/5.png)
