@@ -86,51 +86,6 @@ Following this, we will:
 
   + https://www.kaggle.com/datasets/vagifa/meatconsumption
 
-# Project Timeline and Deliverables 
-
-```mermaid
-gantt
-    title Research Project Timeline & Deliverables
-    section Planning
-    Start             :2024-02-19, 7d
-    Gather Datasets Finding :2024-02-26, 7d
-    Research Question :2024-03-04, 7d
-    Develop Questions :2024-03-11, 5d
-    Research Question Submission Deadline :2024-03-16, 8d
-    
-    section Feedback
-    Feedback: 2024-04-01, 1d
-    Reviewing Research Questions and Project Scope: 2024-04-02, 4d
-
-    section Data Preparation
-    Data Cleaning    :2024-04-22, 3d
-    EDA              :2024-04-25, 2d
-    Refine Questions:2024-04-27, 1d
-    Statistical Analysis:2024-04-28, 3d
-    Visualization   :2024-04-29, 1d
-    Continue Analysis: 2024-05-01, 1d
-
-
-    section Proposal
-    Proposal Deadline:2024-05-01, 1d
-    Feedback         :2024-05-02, 4d
-    Review & Revise  :2024-05-06, 4d
-
-    section Data Testing
-    Develop Insights on Data Preprocessing  :2024-05-10, 3d
-    Dataset Merging for the 3 Datasets (if possible)  :2024-05-13, 1d
-    Develop Transformations on Data Preprocessing :2024-05-14, 2d
-
-    section Model Development
-    Model Training/Validation (SVM, kNN, Log Regression)    :2024-05-18, 25d
-    Determine Approach:2024-06-10, 2d
-    Performance Measurement:2024-06-12, 3d
-    Testing          :2024-06-15, 3d
-
-    section Finalization
-    Final Revisions & Checking:2024-06-18, 1d
-    Project Repository & Website Submission Deadline (Team) :2024-06-19, 1d
-```
 # World Heath Statistics
 ## Merging dataframes except `merged_region_expectancy`
 Five dataframes were merged except one because we couldn’t merge the region one so we kept it separate since this goes by region names and not country names.
@@ -737,6 +692,51 @@ By understanding these multifaceted dynamics, the study aims to guide targeted p
 ### Summary
 The thorough analysis of health, income, and dietary data reveals the complex interplay between economic circumstances and health outcomes. Socioeconomic disparities, dietary habits, and environmental factors significantly influence regional health profiles, highlighting the need for targeted public health initiatives to address these issues. By understanding these relationships, policymakers can better allocate resources and design interventions to improve global health outcomes.
 
+# Project Timeline and Deliverables 
+
+```mermaid
+gantt
+    title Research Project Timeline & Deliverables
+    section Planning
+    Start             :2024-02-19, 7d
+    Gather Datasets Finding :2024-02-26, 7d
+    Research Question :2024-03-04, 7d
+    Develop Questions :2024-03-11, 5d
+    Research Question Submission Deadline :2024-03-16, 8d
+    
+    section Feedback
+    Feedback: 2024-04-01, 1d
+    Reviewing Research Questions and Project Scope: 2024-04-02, 4d
+
+    section Data Preparation
+    Data Cleaning    :2024-04-22, 3d
+    EDA              :2024-04-25, 2d
+    Refine Questions:2024-04-27, 1d
+    Statistical Analysis:2024-04-28, 3d
+    Visualization   :2024-04-29, 1d
+    Continue Analysis: 2024-05-01, 1d
+
+
+    section Proposal
+    Proposal Deadline:2024-05-01, 1d
+    Feedback         :2024-05-02, 4d
+    Review & Revise  :2024-05-06, 4d
+
+    section Data Testing
+    Develop Insights on Data Preprocessing  :2024-05-10, 3d
+    Dataset Merging for the 3 Datasets (if possible)  :2024-05-13, 1d
+    Develop Transformations on Data Preprocessing :2024-05-14, 2d
+
+    section Model Development
+    Model Training/Validation (SVM, kNN, Log Regression)    :2024-05-18, 25d
+    Determine Approach:2024-06-10, 2d
+    Performance Measurement:2024-06-12, 3d
+    Testing          :2024-06-15, 3d
+
+    section Finalization
+    Final Revisions & Checking:2024-06-18, 1d
+    Project Repository & Website Submission Deadline (Team) :2024-06-19, 1d
+```
 
 Team Name: _**The A Team**_
 
