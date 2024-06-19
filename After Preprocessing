@@ -1,1 +1,13 @@
+## Methodology 
+# Merged data frame without region 
 
+![Screenshot 2024-06-19 101739](https://github.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/assets/162557571/8ac7ec12-a6cf-481e-998b-bc8d8c97c20b)
+
+#This model can be used for final predictions as it performs well. Consider addressing heteroscedasticity if further refinement is needed.
+
+# Merged region dataframe
+
+![Screenshot 2024-06-19 101608](https://github.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/assets/162557571/de636a0b-9e5c-48ed-b006-0a9c9166cc3d)
+
+# Perform further validation and potentially add more features or refine existing ones to improve model performance.
+Also, Investigate possible reasons for higher residuals and work on reducing prediction errors, especially for higher values of the target variable.
