@@ -102,9 +102,74 @@ The model shows reasonable accuracy but could benefit from further tuning. The r
 
 
 ![Screenshot 1](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/1.png)
+
+- For Merged Dataframe without Region:
+    - This model can be used for final predictions as it performs well. Consider addressing heteroscedasticity if further refinement is needed.
+
+
 ![Screenshot 2](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/2.png)
-![Screenshot 3](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/3.png)
-![Screenshot 4](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/4.png)
+
+- For Merged Region Dataframe:
+    - Perform further validation and potentially add more features or refine existing ones to improve model performance.
+    - Investigate possible reasons for higher residuals and work on reducing prediction errors, especially for higher values of the target variable.
+
+This combined analysis provides a holistic view of the model performance based on the provided figures and statistical metrics. Based on the results, the models do not seem to be overfitting, as the cross-validated MSEs are close to those of the test set. The similar performance on cross-validation and test sets indicates that the model generalizes well to unseen data, which is a desirable property in machine learning models. The slight differences in MAE and R-squared values are expected due to the natural variability between different data samples.
+
+#### Feature Importances
+
+1. **Location_encoded:**
+   - **Importance:** 0.484135
+   - **Analysis:** This feature is by far the most important, contributing nearly half of the total importance. This indicates that the geographic location plays a crucial role in predicting the target variable, likely due to the significant regional differences in health outcomes and socioeconomic conditions.
+
+2. **Life expectancy:**
+   - **Importance:** 0.158173
+   - **Analysis:** This is the second most important feature, suggesting that the overall life expectancy in a region significantly influences the model’s predictions. Higher life expectancy is generally associated with better health outcomes and living conditions.
+
+3. **Period:**
+   - **Importance:** 0.128907
+   - **Analysis:** The period or time variable is also quite significant, reflecting temporal changes and trends in health statistics and socioeconomic factors over different years.
+
+4. **Indicator_encoded:**
+   - **Importance:** 0.107510
+   - **Analysis:** This feature, which could represent various health indicators or metrics, shows a moderate level of importance, indicating that specific health metrics are relevant in predicting the target variable.
+
+5. **Hres.
+ale Expectancy:**
+   - **Importance:** 0.105385
+   - **Analysis:** Healthy Life Expectancy (HALE) is also a moderately important feature, emphasizing the relevance of the quality of life and health-adjusted life years in the model's predictions.
+
+6. **% OF HALE in life expectancy:**
+   - **Importance:** 0.015891
+   - **Analysis:** This feature has the least importance, suggesting that while the proportion of HALE in overall life expectancy is somewhat relevant, it is not a major driver in the model’s predictive performance compared to other feature
+
+#### Feature Importance Insights
+
+The feature importance analysis highlights the critical role of geographic location and overall life expectancy in predicting health outcomes. Temporal factors and specific health indicators also contribute significantly, while the proportion of HALE in life expectancy is less impactful. This insight can guide further analysis and model refinement, emphasizing the need to consider regional differences and temporal trends in health data.
+
+**Prioritize Location and Life Expectancy:** Focus on these key features for better predictive accuracy.
+
+**Monitor Temporal Changes:** Continuously update models with new data to capture trends.
+
+**Enhance Health Indicators:** Include more detailed health metrics to improve model performance.
+
+**Refine HALE Data Usage:** Use HALE data to provide additional context and depth.
+
+
+![Income Distribution](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/3.png)
+
+- Income Distribution:
+    - The histogram shows a right-skewed distribution for Income..net., indicating that most values are concentrated at the lower end of the range.
+    - There are some high-income outliers
+
+
+
+![GDP vs. Income](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/4.png)
+
+- Scatter Plot of GDP vs. Income:
+    - The scatter plot shows a dense cluster of points with GDP PPP per capita (2011 USD) and Income..net.
+    - Most points are concentrated at lower GDP and income levels, with a few high-income outliers.
+
+
 ![Screenshot 5](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/5.png)
 ![Screenshot 6](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/6.png)
 ![Screenshot 7](https://raw.githubusercontent.com/BILGI-IE-423/ie423-2024-termproject-the-a-team/6e8c0f93d22e8c39e1e51aae723845019855fe50/Preprocessing/Screenshots/7.png)
